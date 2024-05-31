@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZHCMGW0001_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Detalhe" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DataInicio"/>
+                    <PropertyRef Name="DataFim"/>
+                    <PropertyRef Name="Matricula"/>
+                </Key>
+                <Property Name="DataInicio" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DataFim" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Matricula" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Assinado" Type="Edm.Boolean" sap:unicode="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Ferias" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DataInicio"/>
+                    <PropertyRef Name="DataFim"/>
+                    <PropertyRef Name="Matricula"/>
+                </Key>
+                <Property Name="DataInicio" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DataFim" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Matricula" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="Detalhe" Relationship="ZHCMGW0001_SRV.FeriasToDetalhe" FromRole="FromRole_FeriasToDetalhe" ToRole="ToRole_FeriasToDetalhe"/>
+            </EntityType>
+            <EntityType Name="PDF" m:HasStream="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DataInicio"/>
+                    <PropertyRef Name="DataFim"/>
+                    <PropertyRef Name="Matricula"/>
+                </Key>
+                <Property Name="DataInicio" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DataFim" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Matricula" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="MimeType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="URL" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="vacationDetail" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="key"/>
+                    <PropertyRef Name="userId"/>
+                </Key>
+                <Property Name="key" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Int." sap:sortable="false" sap:filterable="false"/>
+                <Property Name="beginDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time Stamp" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="isSigned" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Indicator" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="endDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time Stamp" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="userId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="vacationPDF" m:HasStream="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="key"/>
+                    <PropertyRef Name="userId"/>
+                </Key>
+                <Property Name="key" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Int." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="MimeType" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="URL" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="userId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="vacations" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="key"/>
+                    <PropertyRef Name="userId"/>
+                </Key>
+                <Property Name="key" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="Int." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="beginDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="endDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:unicode="false" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="userId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="vacationDetail" Relationship="ZHCMGW0001_SRV.VacationNavDetalhe" FromRole="FromRole_VacationNavDetalhe" ToRole="ToRole_VacationNavDetalhe"/>
+            </EntityType>
+            <Association Name="FeriasToDetalhe" sap:content-version="1">
+                <End Type="ZHCMGW0001_SRV.Ferias" Multiplicity="*" Role="FromRole_FeriasToDetalhe"/>
+                <End Type="ZHCMGW0001_SRV.Detalhe" Multiplicity="1" Role="ToRole_FeriasToDetalhe"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_FeriasToDetalhe">
+                        <PropertyRef Name="Matricula"/>
+                        <PropertyRef Name="DataFim"/>
+                        <PropertyRef Name="DataInicio"/>
+                    </Principal>
+                    <Dependent Role="ToRole_FeriasToDetalhe">
+                        <PropertyRef Name="Matricula"/>
+                        <PropertyRef Name="DataFim"/>
+                        <PropertyRef Name="DataInicio"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="VacationNavDetalhe" sap:content-version="1">
+                <End Type="ZHCMGW0001_SRV.vacations" Multiplicity="*" Role="FromRole_VacationNavDetalhe"/>
+                <End Type="ZHCMGW0001_SRV.vacationDetail" Multiplicity="1" Role="ToRole_VacationNavDetalhe"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_VacationNavDetalhe">
+                        <PropertyRef Name="userId"/>
+                        <PropertyRef Name="key"/>
+                    </Principal>
+                    <Dependent Role="ToRole_VacationNavDetalhe">
+                        <PropertyRef Name="userId"/>
+                        <PropertyRef Name="key"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZHCMGW0001_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Detalhe" EntityType="ZHCMGW0001_SRV.Detalhe" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="Ferias" EntityType="ZHCMGW0001_SRV.Ferias" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="avisoPDF" EntityType="ZHCMGW0001_SRV.PDF" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="vacationDetail" EntityType="ZHCMGW0001_SRV.vacationDetail" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="vacationPDF" EntityType="ZHCMGW0001_SRV.vacationPDF" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="vacations" EntityType="ZHCMGW0001_SRV.vacations" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="DetalheNav" Association="ZHCMGW0001_SRV.FeriasToDetalhe" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Ferias" Role="FromRole_FeriasToDetalhe"/>
+                    <End EntitySet="Detalhe" Role="ToRole_FeriasToDetalhe"/>
+                </AssociationSet>
+                <AssociationSet Name="vacationDetalheNav" Association="ZHCMGW0001_SRV.VacationNavDetalhe" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="vacations" Role="FromRole_VacationNavDetalhe"/>
+                    <End EntitySet="vacationDetail" Role="ToRole_VacationNavDetalhe"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="https://MY640039.PAYROLL.ONDEMAND.COM:443/sap/opu/odata/sap/ZHCMGW0001_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://MY640039.PAYROLL.ONDEMAND.COM:443/sap/opu/odata/sap/ZHCMGW0001_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,29 @@
+<mvc:View xmlns="sap.m" xmlns:semantic="sap.f.semantic" xmlns:mvc="sap.ui.core.mvc" controllerName="br.com.embraer.avisodeferias.controller.Master">
+
+	<semantic:SemanticPage id="masterPage" preserveHeaderStateOnScroll="true" toggleHeaderOnTitleClick="false">
+		<semantic:titleHeading>
+			<Title id="masterPageTitle" text="{masterView>/title}" level="H2"/>
+		</semantic:titleHeading>
+		<semantic:content>
+			<List id="list" width="auto" class="sapFDynamicPageAlignContent" items="{path:'/vacations',parameters:{expand:'vacationDetail'},sorter:[{path:'key',descending:false}]}" busyIndicatorDelay="{masterView>/delay}" noDataText="{masterView>/noDataText}" mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}" growing="true" growingScrollToLoad="true" updateFinished=".onUpdateFinished" selectionChange=".onSelectionChange">
+				<headerToolbar>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button id="sortButton" press=".onOpenViewSettings" icon="sap-icon://sort" type="Transparent"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<items>
+					<ObjectListItem type="Navigation" press=".onSelectionChange" title="Férias" icon="sap-icon://general-leave-request">
+					<firstStatus>
+							<ObjectStatus id="_IDGenObjectStatus1" text="{= ${vacationDetail/isSigned} ? 'Assinado' : 'Não Assinado' }" state="{= ${vacationDetail/isSigned}  ? 'Indication04' : null }"/> 
+						</firstStatus>
+						<attributes>
+							<ObjectAttribute id="_IDGenObjectAttribute1" text="Período de Férias:" tooltip="Período férias"/>
+							<ObjectAttribute id="_IDGenObjectAttribute2" text="{path: 'beginDate', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', strictParsing: true, UTC: true}} até {path: 'endDate', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'dd/MM/yyyy', strictParsing: true, UTC: true}}" tooltip="Período de férias"/>
+						</attributes>					
+					</ObjectListItem>
+				</items>
+			</List>
+		</semantic:content>
+	</semantic:SemanticPage>
+</mvc:View>

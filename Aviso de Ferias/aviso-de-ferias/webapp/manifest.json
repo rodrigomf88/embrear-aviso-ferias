@@ -1,0 +1,147 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "br.com.embraer.avisodeferias",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.13.5",
+      "toolsId": "e8a22ff1-233b-4804-a430-05f2e82b9741"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZHCMGW0001_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "sap-icon://detail-view",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.124.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "br.com.embraer.avisodeferias.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "useBatch": true,
+          "defaultCountMode": "None",
+          "defaultBindingMode": "OneWay"
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "br.com.embraer.avisodeferias.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false,
+        "bypassed": {
+          "target": "notFound"
+        }
+      },
+      "routes": [
+        {
+            "pattern": "",
+            "name": "master",
+            "target": "master"
+        },
+        {
+            "pattern": "VacationDetail/{key}",
+            "name": "object",
+            "target": [
+                "master",
+                "object"
+            ]
+        }
+    ],
+    "targets": {
+        "master": {
+            "viewName": "Master",
+            "viewLevel": 1,
+            "viewId": "master"
+        },
+        "object": {
+            "viewName": "Detail",
+            "viewId": "detail",
+            "viewLevel": 1,
+            "controlAggregation": "midColumnPages"
+        },
+        "detailObjectNotFound": {
+            "viewName": "DetailObjectNotFound",
+            "viewId": "detailObjectNotFound",
+            "controlAggregation": "midColumnPages"
+        },
+        "notFound": {
+            "viewName": "NotFound",
+            "viewId": "notFound"
+        }
+    }
+    },
+    "rootView": {
+      "viewName": "br.com.embraer.avisodeferias.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}
